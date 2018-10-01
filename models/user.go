@@ -4,20 +4,19 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
+	"time"
 )
 
-var db *gorm.DB
-var err error
-
 type User struct {
-	Id      int    `json:"id"`
-	Login   string `json:"login"`
-	Name    string `json:"name"`
-	Surname string `json:"surname"`
-	Age     int    `json:"age"`
-	Type    string `json:"type"`
-	Car     string `json:"car"`
-	Status  int    `json:"status"`
+	Id         int       `json:"id"`
+	Login      string    `json:"login"`
+	Name       string    `json:"name"`
+	Surname    string    `json:"surname"`
+	Age        int       `json:"age"`
+	Type       string    `json:"type"`
+	Car        string    `json:"car"`
+	Status     int       `json:"status"`
+	Created_at time.Time `json:"created_at"`
 }
 
 func GetUsers(c *gin.Context) {

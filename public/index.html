@@ -21,7 +21,7 @@
 </head>
 <body>
 
-<div class="container" id='app'>
+<div class="container-fluid" id='app'>
     <h1>{{title}}</h1>
     <div class="row">
         <div class="col-4">
@@ -60,7 +60,7 @@
         </div>
 
         <div class="col-4">
-            <h4>Select specific id</h4>
+            <h5>Select specific user_id</h5>
             <select class="form-control" v-model='selectedUser' @change='getUser'>
                 <option v-for='u in avUsers'>{{u}}</option>
             </select>
@@ -74,11 +74,59 @@
                     <p class="card-text">Type: <span>{{user.type}}</span></p>
                     <p class="card-text">Car: <span>{{user.car}}</span></p>
                     <p class="card-text">Status: <span>{{user.status}}</span></p>
+                    <p class="card-text">Registered: <span>{{user.created_at}}</span></p>
                 </div>
                 <div class="card-footer">
                     <div style="color: grey; font-size: 11px">{{time_user}}</div>
                 </div>
             </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-4">
+            <button class="btn btn-sm btn-default" @click='getProducts'>Get products</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-8">
+            <table class="table table-condensed">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Basket</th>
+                    <th scope="col">Img</th>
+                    <th scope="col">Count</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Delivery</th>
+                    <th scope="col">Comment</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Pushed</th>
+                    <th scope="col">Updated_at</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for='(product, index) in products' :key='product.p_id'>
+                    <th scope="row">{{product.p_id}}</th>
+                    <td><a :href="product.link">{{product.name}}</a></td>
+                    <td>{{product.basket}}</td>
+                    <td><img :src="'http:'+product.img" style="max-height: 50px"></td>
+                    <td>{{product.count}}</td>
+                    <td>{{product.price}} ¥</td>
+                    <td>{{product.delivery_price}}</td>
+                    <td>{{product.editor_comm}}</td>
+                    <td>{{product.status}}</td>
+                    <td>{{product.pushed}}</td>
+                    <td>{{product.updated_at}}</td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="color: grey; font-size: 11px">{{time_products}}</div>
+        </div>
+
+        <div class="col-4">
+
         </div>
     </div>
 </div>
